@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Livelihood</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_social">Socialize</string>
+    <string name="title_maps">Heats Maps</string>
+    <string name="title_profile">Profile</string>
+</resources>
