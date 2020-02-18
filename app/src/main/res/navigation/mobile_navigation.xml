@@ -20,9 +20,10 @@
 
     <fragment
         android:id="@+id/navigation_location"
+        xmlns:tools="http://schemas.android.com/tools"
         android:name="com.example.livelihood.ui.location.LocationFragment"
         android:label="@string/title_maps"
-        tools:layout="@layout/activity_maps" />
+        tools:layout="@layout/fragment_location" />
 
 
     <fragment

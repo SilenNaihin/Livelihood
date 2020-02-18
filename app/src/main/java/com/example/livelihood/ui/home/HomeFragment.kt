@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.livelihood.FoodActivity
 import com.example.livelihood.MapsActivity
 import com.example.livelihood.R
+import com.example.livelihood.RealEstate
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -40,6 +41,12 @@ class HomeFragment : Fragment() {
             val intent : Intent = Intent(getActivity(), FoodActivity::class.java)
             startActivity(intent)
         }
+
+        root.realButton.setOnClickListener {
+            val intent : Intent = Intent(getActivity(), RealEstate::class.java)
+            startActivity(intent)
+        }
+
         return root
     }
 

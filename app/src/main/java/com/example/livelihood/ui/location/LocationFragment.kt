@@ -29,7 +29,7 @@ class LocationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        var rootView = inflater.inflate(R.layout.fragment_map, container, false)
+        var rootView = inflater.inflate(R.layout.fragment_location, container, false)
 
         return rootView
     }
