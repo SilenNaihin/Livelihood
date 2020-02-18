@@ -32,3 +32,6 @@ fun getAPI(url: String, callback:(result: String?) -> Unit) {
         }
     })
 }
+
+}
+

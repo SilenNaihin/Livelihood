@@ -38,6 +38,12 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+=======
+        getAPI("https://d743cac9.ngrok.io/get") { result ->
+            println(result)
+        }
+
     }
 
 
