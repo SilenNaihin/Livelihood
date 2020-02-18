@@ -28,5 +28,9 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        getAPI("https://d743cac9.ngrok.io/get") { result ->
+            println(result)
+        }
     }
 }
