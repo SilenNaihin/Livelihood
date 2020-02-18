@@ -1,29 +1,17 @@
 package com.example.livelihood.ui.profile
 
-import android.app.Activity
-import android.content.ContentValues
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.icu.util.VersionInfo
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
-import android.sax.StartElementListener
-import android.util.Log
 import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.livelihood.MainActivity
 import com.example.livelihood.R
 import kotlinx.android.synthetic.main.fragment_profile.*
-import java.lang.Exception
 
 class ProfileFragment : Fragment() {
 
@@ -44,26 +32,12 @@ class ProfileFragment : Fragment() {
 
         val confirmButton: Button = root.findViewById(R.id.confirmButton)
         confirmButton.setOnClickListener {
-            d("Leo", "Button pressed by: ${editText.text}")
-            nameText.text = "${editText.text}"
+            d("Leo", "Button pressed by: ${userName.text}")
+            nameText.text = "${userName.text}"
         }
 
-
-
         return root
-
-
-
-
-
-
-
-
-
-
-
     }
-
 
 }
 
