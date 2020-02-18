@@ -11,6 +11,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import org.json.JSONArray
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
@@ -35,12 +36,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-        if (intent.hasExtra("name")) {
+        if (intent.hasExtra("lan")) {
             var point: LatLng =
                 LatLng(intent.getDoubleExtra("lan", 0.0), intent.getDoubleExtra("lat", 0.0))
 
             mMap.addMarker(MarkerOptions().position(point).title(intent.getStringExtra("name")))
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point))
+        }
+        if (intent.hasExtra("lan0")) {
+            for (index in 0..5) {
+                var point = LatLng(intent.getDoubleExtra("lan$index", 0.0), intent.getDoubleExtra("lat$index", 0.0))
+                mMap.addMarker(MarkerOptions().position(point).title(intent.getStringExtra("name$index")))
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(point))
+            }
+        }
+        if (intent.hasExtra("key")) {
+            for (index in 0..6) {
+                var point = LatLng(intent.getDoubleExtra("lan$index", 0.0), intent.getDoubleExtra("lat$index", 0.0))
+                mMap.addMarker(MarkerOptions().position(point).title(intent.getStringExtra("name$index")))
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(point))
+            }
         }
     }
 }

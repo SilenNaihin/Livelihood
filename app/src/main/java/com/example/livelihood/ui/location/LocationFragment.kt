@@ -1,5 +1,6 @@
 package com.example.livelihood.ui.location
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +18,12 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.CameraPosition
 import android.text.method.TextKeyListener.clear
+import android.widget.Button
+import com.example.livelihood.MapsActivity
+import com.example.livelihood.RealEstate
+import com.example.livelihood.getAPI
 import com.google.android.gms.maps.GoogleMap
+import org.json.JSONArray
 
 class LocationFragment : Fragment() {
 
@@ -29,8 +35,47 @@ class LocationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        var rootView = inflater.inflate(R.layout.fragment_location, container, false)
+        notificationsViewModel =
+            ViewModelProviders.of(this).get(NotificationsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_location, container, false)
+        getAPI("https://4cd27cd9.ngrok.io/get/crimes") { result ->
+            val array = JSONArray(result)
 
-        return rootView
+            val btn1 = root.findViewById<Button>(R.id.crimebutton1)
+            btn1.setOnClickListener {
+                val intent = Intent(getActivity(), MapsActivity::class.java)
+                for (index in 0..(array.length() - 1)) {
+                    val info = array.getJSONObject(index)
+                    intent.putExtra("lan$index",  info.getString("lan").toDouble())
+                    intent.putExtra("lat$index",  info.getString("lat").toDouble())
+                    val title = info.getString("city") + ": " + info.getString("percent") + "%"
+                    intent.putExtra("name$index", title)
+                }
+                startActivity(intent)
+            }
+        }
+
+        val btn1 = root.findViewById<Button>(R.id.realEstateButton)
+        btn1.setOnClickListener {
+            getAPI("https://4cd27cd9.ngrok.io/get/mortage") { result ->
+                val array = JSONArray(result)
+
+                val intent = Intent(getActivity(), MapsActivity::class.java)
+                for (index in 0..(array.length() - 1)) {
+                    val info = array.getJSONObject(index)
+                    intent.putExtra("key", "real")
+                    intent.putExtra("lan$index",  info.getString("lan").toDouble())
+                    intent.putExtra("lat$index",  info.getString("lat").toDouble())
+                    val title = info.getString("city") + ": " + info.getString("percent") + "%"
+                    intent.putExtra("name$index", title)
+                }
+                startActivity(intent)
+
+            }
+        }
+
+
+
+        return root
     }
 }
