@@ -1,5 +1,6 @@
 package com.example.livelihood
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +8,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.livelihood.R.layout.fragment_home
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,11 +29,21 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_profile
             )
         )
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+
+
+
+=======
         getAPI("https://d743cac9.ngrok.io/get") { result ->
             println(result)
         }
+
     }
+
+
+
 }
