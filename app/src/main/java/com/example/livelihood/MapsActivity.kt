@@ -2,6 +2,7 @@ package com.example.livelihood
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewParent
 import com.example.livelihood.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -12,7 +13,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
-
     private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,10 +35,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        if (intent.hasExtra("name")) {
+            var point: LatLng =
+                LatLng(intent.getDoubleExtra("lan", 0.0), intent.getDoubleExtra("lat", 0.0))
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+            mMap.addMarker(MarkerOptions().position(point).title(intent.getStringExtra("name")))
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(point))
+        }
     }
 }

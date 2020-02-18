@@ -9,6 +9,8 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.sax.StartElementListener
+import android.util.Log
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.livelihood.MainActivity
 import com.example.livelihood.R
 import kotlinx.android.synthetic.main.fragment_profile.*
+import java.lang.Exception
 
 class ProfileFragment : Fragment() {
 
@@ -38,7 +41,23 @@ class ProfileFragment : Fragment() {
         profileViewModel.text.observe(this, Observer {
             textView.text = it
         })
+
+        val confirmButton: Button = root.findViewById(R.id.confirmButton)
+        confirmButton.setOnClickListener {
+            d("Leo", "Button pressed by: ${editText.text}")
+            nameText.text = "${editText.text}"
+        }
+
+
+
         return root
+
+
+
+
+
+
+
 
 
 
